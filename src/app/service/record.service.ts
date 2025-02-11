@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, tap, timeout } from 'rxjs/operators';
+import { catchError, map, tap, timeout } from 'rxjs/operators';
 import { RecordModel } from '../model/record.model';
 import { BaseService } from './base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { Status } from '../model/status';
 
 @Injectable({
   providedIn: 'root',
@@ -50,15 +51,20 @@ export class RecordService extends BaseService {
     if (!term.trim()) {
       return of([]);
     }
-    return this.http.get<RecordModel[]>(`${this.endPoint}/?title=${term}`).pipe(
-      tap((result) => {
-        if (result.length) {
-          this.log(`${term}にマッチするデータが見つかりました`);
-        } else {
-          this.log(`${term}にマッチするデータはありませんでした`);
-        }
-      }),
-      catchError(this.handleError<RecordModel[]>('searchRecord', []))
-    );
+    return this.http
+      .get<Status & { records: RecordModel[] }>(
+        `${this.endPoint}/?title=${term}`
+      )
+      .pipe(
+        map((result) => result.records),
+        tap((records) => {
+          if (records.length) {
+            this.log(`${term}にマッチするデータが見つかりました`);
+          } else {
+            this.log(`${term}にマッチするデータはありませんでした`);
+          }
+        }),
+        catchError(this.handleError<RecordModel[]>('searchRecord', []))
+      );
   }
 }

@@ -4,6 +4,7 @@ import { RecordService } from '../service/record.service';
 import { MessageService } from '../service/message.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
+import { Status } from '../model/status';
 
 export interface RecordList extends RecordModel {
   selected: boolean;
@@ -45,15 +46,19 @@ export class recordComponent implements OnInit {
   }
 
   private getRecord(): void {
-    this.recordService.getEntitys<RecordList>().subscribe((record) => {
-      this.record = record.map((item) => {
-        return {
-          ...item,
-          selected: false,
-        };
+    this.recordService
+      .getEntitys<Status & { records: RecordList[] }>()
+      .subscribe((results) => {
+        this.record = results.flatMap((result) =>
+          result.records.map((item) => {
+            return {
+              ...item,
+              selected: false,
+            };
+          })
+        );
+        this.dataSource = new MatTableDataSource(this.record);
       });
-      this.dataSource = new MatTableDataSource(this.record);
-    });
   }
 
   public sortRecord(sortState: Sort): void {
