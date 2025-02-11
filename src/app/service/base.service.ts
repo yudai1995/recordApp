@@ -11,7 +11,7 @@ import { EntityWithId } from '../model/entity';
 })
 export class BaseService {
   public uri: string = environment.uri;
-  public endPoint: string = `${this.uri}/`;
+  public endPoint: string = `${this.uri}/api/`;
 
   httpOptions = {
     headers: new HttpHeaders({

@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class CategoryService extends BaseService {
-  public override endPoint = `${this.uri}/category`;
+  public override endPoint = `${this.uri}/api/category`;
 
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);

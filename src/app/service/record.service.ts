@@ -10,7 +10,7 @@ import { MessageService } from './message.service';
   providedIn: 'root',
 })
 export class RecordService extends BaseService {
-  public override endPoint = `${this.uri}/record`;
+  public override endPoint = `${this.uri}/api/record`;
 
   constructor(http: HttpClient, messageService: MessageService) {
     super(http, messageService);
