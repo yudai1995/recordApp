@@ -18,20 +18,13 @@ export class DashboardComponent implements OnInit {
     this.getRecords();
   }
   private getRecords(): void {
-    this.recordService
-      .getEntitys<Status & { records: RecordModel[] }>()
-      .subscribe({
-        next: (results) => {
-          // 各結果のrecordsプロパティをフラット化して1つの配列にまとめる
-          this.records = results
-            .flatMap((result) => result.records)
-            .slice(0, 5);
-        },
-        error: (error: any) => {
-          console.error('HTTPリクエストエラー:', error);
-          this.error = 'データの取得に失敗しました。';
-        },
-        complete: () => console.info(this.records),
-      });
+    this.recordService.getRecordEntitys<RecordModel>().subscribe({
+      next: (record: RecordModel[]) => (this.records = record.slice(0, 5)),
+      error: (error: any) => {
+        console.error('HTTPリクエストエラー:', error);
+        this.error = 'データの取得に失敗しました。';
+      },
+      complete: () => console.info(this.records),
+    });
   }
 }

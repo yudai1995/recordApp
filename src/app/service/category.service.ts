@@ -5,6 +5,7 @@ import { CategoryModel } from '../model/category.model';
 import { BaseService } from './base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
+import { Status } from '../model/status';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class CategoryService extends BaseService {
   }
 
   public getCategory<T extends CategoryModel>(): Observable<T[]> {
-    return this.http.get<T[]>(this.endPoint).pipe(
+    return this.http.get<Status & { categories: T[] }>(this.endPoint).pipe(
+      map((response: Status & { categories: T[] }) => response.categories), // itemsを抽出
       tap((_) => this.log(`データを取得しました`)),
       map((data: T[]) => {
         const exists = data.some(

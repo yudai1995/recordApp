@@ -31,7 +31,7 @@ export class RecordDatailComponent implements OnInit {
 
   private getRecord(id: number): void {
     this.recordService
-      .getEntity<RecordModelWithId>(id)
+      .getRecordEntity<RecordModelWithId>(id)
       .subscribe((record) => (this.record = record));
   }
 
