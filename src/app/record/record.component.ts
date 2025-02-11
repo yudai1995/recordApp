@@ -84,7 +84,7 @@ export class recordComponent implements OnInit {
     this.recordService
       .addRecord({
         id: undefined,
-        category: 0,
+        categoryId: 1,
         title: title,
         recordDate: new Date(),
         lastUpdate: undefined,

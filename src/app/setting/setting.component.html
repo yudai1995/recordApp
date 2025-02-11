@@ -1,19 +1,11 @@
-<h2>一覧</h2>
+<h2>設定</h2>
+
+<h3>カテゴリ</h3>
 <div class="topWrapper">
-  <label
-    >タイトル
-    <input type="text" #memberName />
-  </label>
-  <button (click)="add(memberName.value); memberName.value = ''">追加</button>
+  <button (click)="openCreateCategoryDialog()">追加</button>
 </div>
 
-<table
-  mat-table
-  [dataSource]="dataSource"
-  matSort
-  (matSortChange)="sortRecord($event)"
-  class="mat-elevation-z8"
->
+<table mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
   <!-- CheckBox Column -->
   <ng-container matColumnDef="checkBox">
     <th mat-header-cell *matHeaderCellDef>
@@ -36,49 +28,36 @@
     </td>
   </ng-container>
 
-  <!-- id Column -->
-  <ng-container matColumnDef="id">
+  <!-- categoryId Column -->
+  <ng-container matColumnDef="categoryId">
     <th
       mat-header-cell
       *matHeaderCellDef
       mat-sort-header
       sortActionDescription="Sort by number"
     >
-      ID
+      カテゴリID
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.categoryId }}</td>
   </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="title">
+  <!-- categoryName Column -->
+  <ng-container matColumnDef="categoryName">
     <th
       mat-header-cell
       *matHeaderCellDef
       mat-sort-header
       sortActionDescription="Sort by name"
     >
-      タイトル
+      カテゴリ名
     </th>
-    <td mat-cell *matCellDef="let element">{{ element.title }}</td>
-  </ng-container>
-
-  <!-- Date Column -->
-  <ng-container matColumnDef="recordDate">
-    <th
-      mat-header-cell
-      *matHeaderCellDef
-      mat-sort-header
-      sortActionDescription="Sort by recordDate"
-    >
-      登録日
-    </th>
-    <td mat-cell *matCellDef="let element">{{ element.recordDate }}</td>
+    <td mat-cell *matCellDef="let element">{{ element.categoryName }}</td>
   </ng-container>
 
   <!-- delete button Column -->
   <ng-container matColumnDef="deleteBtn">
     <th mat-header-cell *matHeaderCellDef>
-      <button *ngIf="selectedRecords.length" (click)="selectedDelete()">
+      <button *ngIf="selectedCategorys.length" (click)="selectedDelete()">
         削除
       </button>
     </th>

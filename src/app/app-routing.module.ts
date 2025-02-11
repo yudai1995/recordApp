@@ -4,6 +4,7 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { recordComponent } from './record/record.component';
 import { RecordDatailComponent } from './record-datail/record-datail.component';
 import { HistoryComponent } from './history/history.component';
+import { SettingComponent } from './setting/setting.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
@@ -11,6 +12,7 @@ const routes: Routes = [
   { path: 'detail/:id', component: RecordDatailComponent },
   { path: 'dashboard', component: DashboardComponent },
   { path: 'history', component: HistoryComponent },
+  { path: 'setting', component: SettingComponent },
 ];
 
 @NgModule({

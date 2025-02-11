@@ -1,14 +1,12 @@
-<div class="wrapper">
-  <h2>履歴</h2>
+<h2>履歴</h2>
 
-  <div *ngIf="!messageService.messages.length"><p>データがありません</p></div>
-  <div *ngIf="messageService.messages.length">
-    <button class="clear" (click)="messageService.clear()">クリア</button>
+<div *ngIf="!messageService.messages.length"><p>データがありません</p></div>
+<div *ngIf="messageService.messages.length">
+  <button class="clear" (click)="messageService.clear()">クリア</button>
 
-    <ul>
-      <li *ngFor="let message of messageService.messages">
-        {{ message }}
-      </li>
-    </ul>
-  </div>
+  <ul>
+    <li *ngFor="let message of messageService.messages">
+      {{ message }}
+    </li>
+  </ul>
 </div>

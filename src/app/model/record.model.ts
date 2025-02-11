@@ -1,6 +1,6 @@
 export interface RecordModel {
   id: number | undefined;
-  category: number;
+  categoryId: number;
   title: string;
   recordDate: Date;
   lastUpdate: Date | undefined;

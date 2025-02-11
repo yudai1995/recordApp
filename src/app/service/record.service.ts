@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { catchError, map, tap, timeout } from 'rxjs/operators';
+import { catchError, tap, timeout } from 'rxjs/operators';
 import { RecordModel } from '../model/record.model';
 import { BaseService } from './base.service';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
@@ -29,7 +29,7 @@ export class RecordService extends BaseService {
       .post<RecordModel>(
         this.endPoint,
         {
-          category: +record.category,
+          categoryId: +record.categoryId,
           title: record.title,
           recordDate: `${record.recordDate.getFullYear()}-${
             record.recordDate.getMonth() + 1

@@ -12,7 +12,7 @@ import { RecordService } from '../service/record.service';
 })
 export class EditDialogComponent implements OnInit {
   recordFormControl = new FormGroup({
-    category: new FormControl('0', Validators.required),
+    categoryId: new FormControl('1', Validators.required),
     title: new FormControl('', Validators.required),
     recordDate: new FormControl(new Date(), Validators.required),
   });
@@ -26,13 +26,13 @@ export class EditDialogComponent implements OnInit {
   ngOnInit(): void {
     if (this.data) {
       this.recordFormControl.setValue({
-        category: `${this.data.category}`,
+        categoryId: `${this.data.categoryId}`,
         title: this.data.title,
         recordDate: this.data.recordDate,
       });
     } else {
       this.recordFormControl.setValue({
-        category: '0',
+        categoryId: '1',
         title: '',
         recordDate: new Date(),
       });
@@ -40,7 +40,7 @@ export class EditDialogComponent implements OnInit {
   }
 
   public addRecord(): void {
-    const category = +this.recordFormControl.controls['category'].value;
+    const categoryId = +this.recordFormControl.controls['categoryId'].value;
     const title = this.recordFormControl.controls['title'].value;
     const recordDate = this.recordFormControl.controls['recordDate'].value;
 
@@ -50,7 +50,7 @@ export class EditDialogComponent implements OnInit {
     this.recordService
       .addRecord({
         id: undefined,
-        category,
+        categoryId,
         title,
         recordDate,
         lastUpdate: undefined,

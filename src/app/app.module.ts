@@ -29,6 +29,9 @@ import { SearchDialogComponent } from './search-dialog/search-dialog.component';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { SettingComponent } from './setting/setting.component';
+import { CategoryService } from './service/category.service';
+import { CreateCategoryDialogComponent } from './createCategory-dialog/createCategory-dialog.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +43,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MemberSearchComponent,
     EditDialogComponent,
     SearchDialogComponent,
+    SettingComponent,
+    CreateCategoryDialogComponent,
   ],
   imports: [
     CommonModule,
@@ -64,7 +69,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatSortModule,
     MatCheckboxModule,
   ],
-  providers: [RecordService],
+  providers: [RecordService, CategoryService],
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
