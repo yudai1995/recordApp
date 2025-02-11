@@ -2,9 +2,10 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { environment } from 'src/environments/environment';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { RecordModel } from '../model/record.model';
 import { EntityWithId } from '../model/entity';
+import { Status } from '../model/status';
 
 @Injectable({
   providedIn: 'root',
@@ -23,18 +24,23 @@ export class BaseService {
 
   constructor(public http: HttpClient, public messageService: MessageService) {}
 
-  public getEntitys<T>(): Observable<T[]> {
-    return this.http.get<T[]>(this.endPoint).pipe(
+  public getRecordEntitys<T>(): Observable<T[]> {
+    const result = this.http.get<Status & { records: T[] }>(this.endPoint).pipe(
+      map((response: Status & { records: T[] }) => response.records), // itemsを抽出
       tap((_) => this.log(`データを取得しました`)),
       catchError(this.handleError<T[]>('getRecords', []))
     );
+    console.log(result.subscribe());
+
+    return result;
   }
 
-  public getEntity<T>(id: number): Observable<T | undefined> {
+  public getRecordEntity<T>(id: number): Observable<T | undefined> {
     this.messageService.add(`Service: データ(id = ${id})を取得しました`);
     const url = `${this.endPoint}/${id}`;
 
-    return this.http.get<T>(url).pipe(
+    return this.http.get<Status & { record: T }>(url).pipe(
+      map((response: Status & { record: T }) => response.record), // itemsを抽出
       tap((_) => this.log(`データ(id=${id})を取得しました`)),
       catchError(this.handleError<T>(`getRecord id=${id}`))
     );
