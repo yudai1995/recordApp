@@ -1,11 +1,5 @@
 {
   "navigationFallback": {
-    "rewrite": "/index.html",
-    "exclude": ["*.{png,jpg,gif}", "*.css", "/api/*"]
-  },
-  "globalHeaders": {
-    "X-Content-Type-Options": "nosniff",
-    "X-Frame-Options": "DENY",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self'; object-src 'none'"
+    "rewrite": "/index.html"
   }
 }
