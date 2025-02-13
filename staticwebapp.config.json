@@ -6,7 +6,11 @@
     },
     {
       "route": "/dashboard",
-      "rewrite": "/dashboard"
+      "methods": [
+        "get"
+      ],
+      "rewrite": "/dashboard",
+      "redirect": "/dashboard"
     },
     {
       "route": "/list",
@@ -27,7 +31,10 @@
   ],
   "navigationFallback": {
     "rewrite": "",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
+    "exclude": [
+      "/images/*.{png,jpg,gif}",
+      "/css/*"
+    ]
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
