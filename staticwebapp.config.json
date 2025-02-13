@@ -2,39 +2,32 @@
   "routes": [
     {
       "route": "/",
-      "rewrite": "/dashboard"
+      "rewrite": "/index.html"
     },
     {
       "route": "/dashboard",
-      "methods": [
-        "get"
-      ],
-      "rewrite": "/dashboard",
-      "redirect": "/dashboard"
+      "rewrite": "/index.html"
     },
     {
       "route": "/list",
-      "rewrite": "/list"
+      "rewrite": "/index.html"
     },
     {
       "route": "/detail/*",
-      "rewrite": "/detail"
+      "rewrite": "/index.html"
     },
     {
       "route": "/history",
-      "rewrite": "/history"
+      "rewrite": "/index.html"
     },
     {
       "route": "/setting",
-      "rewrite": "/setting"
+      "rewrite": "/index.html"
     }
   ],
   "navigationFallback": {
-    "rewrite": "",
-    "exclude": [
-      "/images/*.{png,jpg,gif}",
-      "/css/*"
-    ]
+    "rewrite": "/index.html",
+    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
   },
   "globalHeaders": {
     "X-Content-Type-Options": "nosniff",
