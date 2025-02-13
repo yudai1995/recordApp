@@ -1,37 +1,5 @@
 {
-  "routes": [
-    {
-      "route": "/",
-      "rewrite": "/dashboard"
-    },
-    {
-      "route": "/dashboard",
-      "rewrite": "/dashboard"
-    },
-    {
-      "route": "/list",
-      "rewrite": "/list"
-    },
-    {
-      "route": "/detail/*",
-      "rewrite": "/detail"
-    },
-    {
-      "route": "/history",
-      "rewrite": "/history"
-    },
-    {
-      "route": "/setting",
-      "rewrite": "/setting"
-    }
-  ],
   "navigationFallback": {
-    "rewrite": "",
-    "exclude": ["/images/*.{png,jpg,gif}", "/css/*"]
-  },
-  "globalHeaders": {
-    "X-Content-Type-Options": "nosniff",
-    "X-Frame-Options": "DENY",
-    "Content-Security-Policy": "default-src 'self'; script-src 'self'; object-src 'none'"
+    "rewrite": "/index.html"
   }
 }
