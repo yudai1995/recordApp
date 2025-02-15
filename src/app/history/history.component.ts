@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageService } from '../service/message.service';
+import { MatTableDataSource } from '@angular/material/table';
 
 @Component({
   selector: 'app-history',
@@ -7,7 +8,11 @@ import { MessageService } from '../service/message.service';
   styleUrls: ['./history.component.scss'],
 })
 export class HistoryComponent implements OnInit {
+  displayedColumns: string[] = ['No', 'message'];
   constructor(public messageService: MessageService) {}
 
-  ngOnInit(): void {}
+  dataSource = new MatTableDataSource(this.messageService.messages);
+  ngOnInit(): void {
+    this.dataSource = new MatTableDataSource(this.messageService.messages);
+  }
 }

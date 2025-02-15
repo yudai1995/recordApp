@@ -1,5 +1,5 @@
 import { Location } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { RecordModel } from '../model/record.model';
 import { RecordService } from '../service/record.service';
@@ -15,6 +15,7 @@ interface RecordModelWithId extends RecordModel {
 })
 export class RecordDatailComponent implements OnInit {
   @Input() record?: RecordModelWithId;
+  @ViewChild('titleInput') titleInput!: ElementRef;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,7 +40,10 @@ export class RecordDatailComponent implements OnInit {
     this.location.back();
   }
 
-  public save(): void {
+  public save(title: string): void {
+    if (this.record) {
+      this.record.title = title;
+    }
     this.recordService
       .updateEntity<RecordModelWithId>(this.record!)
       .subscribe(() => this.goBack());
