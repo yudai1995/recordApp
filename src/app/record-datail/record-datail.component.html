@@ -1,15 +1,17 @@
 <div *ngIf="record">
-  <h2>{{ record.title }}</h2>
-  <ul *ngIf="record.title">
-    <li><span>id: </span> {{ record.id }}</li>
-    <li>
-      <label
-        >タイトル
-        <input type="text" [(ngModel)]="record.title" placeholder="タイトル" />
-      </label>
-    </li>
-  </ul>
+  <h2>
+    {{ record.title }} <span class="text-small">(id: {{ record.id }})</span>
+  </h2>
+  <form *ngIf="record.title">
+    <mat-form-field class="example-full-width">
+      <input
+        matInput
+        placeholder="タイトル"
+        [value]="record.title"
+        #titleInput
+      />
+    </mat-form-field>
+  </form>
 
-  <button (click)="goBack()">戻る</button>
-  <button (click)="save()">保存</button>
+  <button (click)="save(titleInput.nativeElement.value)">保存</button>
 </div>

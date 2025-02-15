@@ -4,7 +4,6 @@ import { RecordService } from '../service/record.service';
 import { MessageService } from '../service/message.service';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { Status } from '../model/status';
 
 export interface RecordList extends RecordModel {
   selected: boolean;
