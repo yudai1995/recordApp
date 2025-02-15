@@ -1,9 +1,10 @@
 <header>
   <section>
-    <h1>{{ title }}</h1>
+    <h1>
+      <a mat-flat-button routerLink="/dashboard">{{ title }}</a>
+    </h1>
 
     <nav>
-      <a mat-flat-button routerLink="/dashboard">ダッシュボード</a>
       <a mat-flat-button routerLink="/list">一覧</a>
       <a mat-flat-button routerLink="/history">履歴</a>
       <button mat-flat-button (click)="openEditDialog()">登録</button>
