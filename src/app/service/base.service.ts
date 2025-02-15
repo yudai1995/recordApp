@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { MessageService } from './message.service';
 import { environment } from 'src/environments/environment';
 import { Observable, catchError, map, of, tap } from 'rxjs';
@@ -18,8 +18,8 @@ export class BaseService {
     headers: new HttpHeaders({
       'Content-type': 'application/json',
       'Cache-Control': 'no-cache',
-      timeout: '6000000',
     }),
+    params: new HttpParams().set('timeout', '6000000'),
   };
 
   constructor(public http: HttpClient, public messageService: MessageService) {}

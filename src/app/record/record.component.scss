@@ -2,84 +2,32 @@
   margin-bottom: 10px;
 }
 
-.record {
-  margin: 0;
-  padding: 0;
-  width: 100%;
-  list-style: none;
-
-  li {
-    position: relative;
-    cursor: pointer;
-    background-color: #eee;
-    margin: 0.5em;
-    padding: 0;
-    border-radius: 4px;
-    transition: 0.2s;
-
-    &:hover {
-      background-color: #f7f2fd;
-
-      .badge {
-        background-color: #1a85ff;
-      }
-    }
-
-    a {
-      display: inline-block;
-      text-decoration: none;
-      color: #333333;
-      width: 100%;
-    }
-  }
-
-  .badge {
-    display: inline-block;
-    font-size: small;
-    color: white;
-    padding: 0.8em 0.7em 0 0.7em;
-    background-color: #405061;
-    line-height: 1em;
-    position: relative;
-    left: 0;
-    top: 0;
-    height: 1.8em;
-    min-width: 16px;
-    text-align: right;
-    border-radius: 4px 0 0 4px;
-  }
-}
-
 button {
+  display: flex;
+  align-items: center;
   background-color: #eee;
   border: none;
-  padding: 5px 10px;
   border-radius: 4px;
-  cursor: pointer;
-  cursor: hand;
   font-family: Arial;
+  margin-left: 20px;
+  transition: 0.2s;
 
   &:hover {
-    background-color: #cfd8dc;
+    background-color: #e1edff;
   }
 
   &.delete {
+    padding: 5px 10px;
     background-color: gray;
     color: white;
-    transition: 0.2s;
 
     &:hover {
       background-color: #ce0000;
     }
   }
-}
 
-:host {
-  .mat-table {
-    width: 100%;
-  }
-
-  .mat-list-item-content {
-    width: 100%;
+  .deleteBtnLabel {
+    font-size: 10px;
+    margin-left: 4px;
   }
 }
